@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3aJ-l4-Ie0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Coin Alat-->
+        <scene sceneID="zvJ-Jd-x64">
+            <objects>
+                <tableViewController id="aIe-R1-JWA" customClass="CoinsTableViewController" customModule="cryptoalat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GSI-Ae-94X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="coin" id="XIw-fh-Vg9" customClass="CoinTableViewCell" customModule="cryptoalat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XIw-fh-Vg9" id="dGx-m2-7bZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz3-Ah-7tn" userLabel="name">
+                                            <rect key="frame" x="16" y="11" width="40" height="22"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sh-Hm-Val" userLabel="amount">
+                                            <rect key="frame" x="312" y="11" width="47" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Dz3-Ah-7tn" firstAttribute="top" secondItem="dGx-m2-7bZ" secondAttribute="topMargin" id="5Tm-pF-FHo"/>
+                                        <constraint firstItem="6sh-Hm-Val" firstAttribute="trailing" secondItem="dGx-m2-7bZ" secondAttribute="trailingMargin" id="6iP-Cn-XDQ"/>
+                                        <constraint firstItem="6sh-Hm-Val" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dGx-m2-7bZ" secondAttribute="leadingMargin" id="7Ar-jc-gzS"/>
+                                        <constraint firstItem="6sh-Hm-Val" firstAttribute="bottom" secondItem="dGx-m2-7bZ" secondAttribute="bottomMargin" id="TUo-jb-CHN"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dz3-Ah-7tn" secondAttribute="trailingMargin" id="e1c-vk-CsI"/>
+                                        <constraint firstItem="Dz3-Ah-7tn" firstAttribute="leading" secondItem="dGx-m2-7bZ" secondAttribute="leadingMargin" id="e9K-TC-2VY"/>
+                                        <constraint firstItem="6sh-Hm-Val" firstAttribute="top" secondItem="dGx-m2-7bZ" secondAttribute="topMargin" id="mfz-hE-QIa"/>
+                                        <constraint firstItem="Dz3-Ah-7tn" firstAttribute="bottom" secondItem="dGx-m2-7bZ" secondAttribute="bottomMargin" id="n4I-HE-Blf"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amount" destination="6sh-Hm-Val" id="Wby-zo-GrF"/>
+                                    <outlet property="name" destination="Dz3-Ah-7tn" id="q1N-0o-8tl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="aIe-R1-JWA" id="9do-SQ-ZDt"/>
+                            <outlet property="delegate" destination="aIe-R1-JWA" id="gz4-11-gpl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Coin Alat" id="zGH-MF-0iD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H8i-Pc-E0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412" y="134"/>
+        </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="Hlj-0e-CeQ">
+            <objects>
+                <viewController id="3aJ-l4-Ie0" customClass="LaunchViewController" customModule="cryptoalat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5r1-Go-wOn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zmN-m3-VoT"/>
+                    </view>
+                    <connections>
+                        <segue destination="sOy-39-HiD" kind="presentation" identifier="Main" id="JLR-D2-B95"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jH9-tW-s1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-338" y="-595"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ibz-8U-bkw">
+            <objects>
+                <navigationController id="sOy-39-HiD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="0bp-v6-EsE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aIe-R1-JWA" kind="relationship" relationship="rootViewController" id="TGV-kP-a3i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mwx-iC-vKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-337" y="134"/>
+        </scene>
+    </scenes>
+</document>
