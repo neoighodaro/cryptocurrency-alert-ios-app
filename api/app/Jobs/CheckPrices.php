@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Setting;
+use App\Device;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,6 +14,8 @@ use App\Notifications\CoinPriceChanged;
 class CheckPrices implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $supportedCurrencies = ['ETH', 'BTC'];
 
     /**
      * Execute the job.
@@ -41,12 +43,12 @@ class CheckPrices implements ShouldQueue
 
     private function triggerPossiblePushNotification($payload)
     {
-        foreach (Setting::SUPPORTED_CURRENCIES as $currency) {
+        foreach ($this->supportedCurrencies as $currency) {
             $currentPrice = $payload[$currency]['current'];
 
             $currency = strtolower($currency);
 
-            foreach (Setting::affected($currency, $currentPrice)->get() as $device) {
+            foreach (Device::affected($currency, $currentPrice)->get() as $device) {
                 $device->notify(new CoinPriceChanged($currency, $device, $payload));
             }
         }
@@ -56,13 +58,13 @@ class CheckPrices implements ShouldQueue
     {
         $payload = [];
 
-        foreach (Setting::SUPPORTED_CURRENCIES as $currency) {
-            if (env('SIMULATE_CRYPTO_PRICES') === true) {
+        foreach ($this->supportedCurrencies as $currency) {
+            if (config('app.debug') === true) {
                 $response = [
-                        $currency => [
-                            'USD' => (float) rand(100, 15000)
-                        ]
-                    ];
+                    $currency => [
+                        'USD' => (float) rand(100, 15000)
+                    ]
+                ];
             } else {
                 $url = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=${currency}&tsyms=USD&ts=${timestamp}";
                 $response = json_decode(file_get_contents($url), true);

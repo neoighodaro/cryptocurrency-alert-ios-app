@@ -1,10 +1,10 @@
 <?php
 
-use App\Setting;
 use Illuminate\Http\Request;
+use App\Device;
 
 Route::get('/settings', function (Request $request) {
-    return Setting::whereDeviceUuid($request->query('u'))->firstOrFail()['settings'];
+    return Device::whereUuid($request->query('u'))->firstOrFail()['settings'];
 });
 
 Route::post('/settings', function (Request $request) {
@@ -18,7 +18,7 @@ Route::post('/settings', function (Request $request) {
     // Remove all entries with values less than or equal to zero
     $settings = array_filter($settings, function ($value) { return $value > 0; });
 
-    $device = Setting::firstOrNew(['device_uuid' => $request->query('u')]);
+    $device = Device::firstOrNew(['uuid' => $request->query('u')]);
     $device->fill($settings);
     $saved = $device->save();
 
