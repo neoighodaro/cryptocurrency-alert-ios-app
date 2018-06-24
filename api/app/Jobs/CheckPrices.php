@@ -66,7 +66,7 @@ class CheckPrices implements ShouldQueue
                     ]
                 ];
             } else {
-                $url = "https://min-api.cryptocompare.com/data/pricehistorical?fsym=${currency}&tsyms=USD&ts=${timestamp}";
+                $url = "https://min-api.cryptocompare.com/data/pricehistorical?fsym={$currency}&tsyms=USD&ts={$timestamp}";
                 $response = json_decode(file_get_contents($url), true);
             }
 

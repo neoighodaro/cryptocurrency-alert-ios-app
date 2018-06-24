@@ -2,10 +2,11 @@
 
 namespace App\Notifications;
 
-use App\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
+use Neo\PusherBeams\PusherBeams;
+use Neo\PusherBeams\PusherMessage;
+use App\Device;
 
 class CoinPriceChanged extends Notification
 {
@@ -20,7 +21,7 @@ class CoinPriceChanged extends Notification
      *
      * @return void
      */
-    public function __construct(string $currency, Setting $device, array $payload)
+    public function __construct(string $currency, Device $device, array $payload)
     {
         $this->currency = $currency;
         $this->device = $device;
@@ -35,33 +36,27 @@ class CoinPriceChanged extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return [PusherBeams::class];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toPushNotification($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        $currentPrice = $this->payload[strtoupper($this->currency)]['current'];
+        $previousPrice = $this->payload[strtoupper($this->currency)]['current'];
+
+        $direction = $currentPrice > $previousPrice ? 'climbed' : 'dropped';
+
+        $currentPriceFormatted = number_format($currentPrice);
+
+        return PusherMessage::create()
+                ->iOS()
+                ->sound('success')
+                ->title("Price of {$this->currency} has {$direction}")
+                ->body("The price of {$this->currency} has {$direction} and is now \${$currentPriceFormatted}");
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
+    public function pushNotificationInterest()
     {
-        return [
-            //
-        ];
+        return "{$this->device->uuid}_{$this->currency}_changed";
     }
 }
