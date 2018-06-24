@@ -32,6 +32,7 @@
 		B5FC6A1F20DD4AA900C8E08B /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		B5FC6A2120DE6EEA00C8E08B /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
 		B5FC6A2620DE704300C8E08B /* CoinsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTableViewController.swift; sourceTree = "<group>"; };
+		B5FC6A2A20E0168400C8E08B /* cryptoalat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cryptoalat.entitlements; sourceTree = "<group>"; };
 		C0329DC31537D4048222ACE9 /* Pods-cryptoalat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoalat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoalat/Pods-cryptoalat.debug.xcconfig"; sourceTree = "<group>"; };
 		C129B4EF13F6E8F50282C8A2 /* Pods_cryptoalat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoalat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,6 +78,7 @@
 		B5FC6A0A20DD1CEC00C8E08B /* cryptoalat */ = {
 			isa = PBXGroup;
 			children = (
+				B5FC6A2A20E0168400C8E08B /* cryptoalat.entitlements */,
 				B5FC6A2520DE6FF300C8E08B /* App */,
 				B5FC6A0B20DD1CEC00C8E08B /* AppDelegate.swift */,
 				B5FC6A0F20DD1CEC00C8E08B /* Main.storyboard */,
@@ -150,6 +152,11 @@
 				TargetAttributes = {
 					B5FC6A0720DD1CEC00C8E08B = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -396,9 +403,11 @@
 			baseConfigurationReference = C0329DC31537D4048222ACE9 /* Pods-cryptoalat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cryptoalat/cryptoalat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMQ6R58UAV;
 				INFOPLIST_FILE = cryptoalat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,9 +424,11 @@
 			baseConfigurationReference = 9C0BCE424ED704EAA8FEA442 /* Pods-cryptoalat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cryptoalat/cryptoalat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMQ6R58UAV;
 				INFOPLIST_FILE = cryptoalat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

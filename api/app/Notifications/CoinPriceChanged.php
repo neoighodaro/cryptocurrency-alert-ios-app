@@ -57,6 +57,10 @@ class CoinPriceChanged extends Notification
 
     public function pushNotificationInterest()
     {
-        return "{$this->device->uuid}_{$this->currency}_changed";
+        $uuid = strtolower(str_replace('-', '_', $this->device->uuid));
+
+        \Log::info("{$uuid}_{$this->currency}_changed");
+
+        return "{$uuid}_{$this->currency}_changed";
     }
 }

@@ -79,11 +79,11 @@ class SettingsService {
     
     /// Fetches the settings from the remote API
     fileprivate func fetchRemoteSettings(completion: @escaping (Settings?) -> Void) {
-        guard let deviceID = AppConstants.deviceID else {
+        guard let deviceID = AppConstants.deviceIDFormatted else {
             return completion(nil)
         }
 
-        let url = "http://127.0.0.1:8000/api/settings?u=\(deviceID)"
+        let url = "\(AppConstants.API_URL)?u=\(deviceID)"
         Alamofire.request(url).validate().responseJSON { resp in
             if let data = resp.data, resp.result.isSuccess {
                 let decoder = JSONDecoder()
@@ -98,11 +98,11 @@ class SettingsService {
     
     /// Update the remote settings
     fileprivate func updateRemoteSettings(_ settings: Settings, completion: @escaping(Bool) -> Void) {
-        guard let deviceID = AppConstants.deviceID else {
+        guard let deviceID = AppConstants.deviceIDFormatted else {
             return completion(false)
         }
         
-        let url = "http://127.0.0.1:8000/api/settings?u=\(deviceID)"
+        let url = "\(AppConstants.API_URL)?u=\(deviceID)"
         
         Alamofire.request(url, method: .post, parameters: settings.toParams()).validate().responseJSON { resp in
             guard resp.result.isSuccess, let res = resp.result.value as? [String: String] else {
