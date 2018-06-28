@@ -59,8 +59,6 @@ class CoinPriceChanged extends Notification
     {
         $uuid = strtolower(str_replace('-', '_', $this->device->uuid));
 
-        \Log::info("{$uuid}_{$this->currency}_changed");
-
         return "{$uuid}_{$this->currency}_changed";
     }
 }

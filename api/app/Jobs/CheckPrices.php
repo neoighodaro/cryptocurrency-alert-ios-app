@@ -24,16 +24,12 @@ class CheckPrices implements ShouldQueue
      */
     public function handle()
     {
-        $timestamp = now()->timestamp;
-
         $payload = $this->getPricesForSupportedCurrencies();
 
         if (!empty($payload)) {
             $this->triggerPusherUpdate($payload);
             $this->triggerPossiblePushNotification($payload);
         }
-
-        $this->release();
     }
 
     private function triggerPusherUpdate($payload)
