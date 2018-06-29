@@ -10,10 +10,6 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -22,7 +18,7 @@ class LaunchViewController: UIViewController {
         }
     }
 
-    func routeToMainController() {
+    fileprivate func routeToMainController() {
         performSegue(withIdentifier: "Main", sender: self)
     }
     
