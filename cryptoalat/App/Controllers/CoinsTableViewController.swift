@@ -39,7 +39,9 @@ class CoinsTableViewController: UITableViewController {
                     self.coins.append(Coin(name: coin, rate: currentPrice))
                 }
 
-                self.tableView.reloadData()
+                Dispatch.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
 
