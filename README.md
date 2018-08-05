@@ -1,7 +1,7 @@
 # Create Cryptocurrency App with Pusher Channels, Beams, Swift and Laravel
 This application is a demo on how you can create a cryptocurrency iOS application with  push notifications on currency changes using Swift, Laravel, Pusher Channels and Pusher Beams.
 
-View tutorial: [Part 1](http://https://pusher.com/tutorials/cryptocurrency-tracking-swift-laravel-part-1) [Part 2](http://https://pusher.com/tutorials/cryptocurrency-tracking-swift-laravel-part-2)
+View tutorial: [Part 1](https://pusher.com/tutorials/cryptocurrency-tracking-swift-laravel-part-1) [Part 2](https://pusher.com/tutorials/cryptocurrency-tracking-swift-laravel-part-2)
 
 ### Prerequisites
 
